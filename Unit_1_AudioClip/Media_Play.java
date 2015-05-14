@@ -12,6 +12,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener.Change;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -35,6 +36,9 @@ public class Main extends Application {
         t.setX(50);
         t.setY(50);
        
+        Button status = new Button();
+        
+        
        CheckBox checkbox;
        final Slider slider1, slider2, slider3, slider4, slider5;
        
@@ -65,11 +69,26 @@ public class Main extends Application {
             }
         });
        
+       status.setLayoutX(20);
+       status.setLayoutY(20);
+       status.setText("Play/Pause");
+       status.setOnMouseClicked(new EventHandler(){
+            @Override
+            public void handle(Event e) {
+                if(md.getStatus() == MediaPlayer.Status.PLAYING){
+                    md.pause();
+                }else{
+                    md.play();
+                }
+            }
+       });
+       
        
        
        Group group = new Group();
        group.getChildren().add(t);
        group.getChildren().add(slider1);
+       group.getChildren().add(status);
        
        Scene s = new Scene(group);
        primaryStage.setTitle("Hello world");
