@@ -43,7 +43,7 @@ public class Main extends Application {
        slider1.setMinorTickCount(5);
        slider1.setBlockIncrement(10);
        
-       //just wav file
+       //just wav file -> http://media.io/
        AudioClip a = new AudioClip(getClass().getResource("audio/Stromae-Papaoutai.wav").toString());
        a.play();
        
